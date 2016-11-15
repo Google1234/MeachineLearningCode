@@ -123,7 +123,7 @@ def main(_):
     train_data, train_labels = fake_data(256)
     validation_data, validation_labels = fake_data(EVAL_BATCH_SIZE)
     test_data, test_labels = fake_data(EVAL_BATCH_SIZE)
-    num_epochs = 1
+    num_epochs= 1
   else:
     # Get the data.
     train_data_filename = maybe_download('train-images-idx3-ubyte.gz')
@@ -282,7 +282,7 @@ def main(_):
   start_time = time.time()
   with tf.Session() as sess:
     # Run all the initializers to prepare the trainable parameters.
-    tf.global_variables_initializer().run()
+    tf.initialize_all_variables().run()
     print('Initialized!')
     # Loop through training steps.
     for step in xrange(int(num_epochs * train_size) // BATCH_SIZE):
@@ -335,4 +335,5 @@ if __name__ == '__main__':
       help='True if running a self test.')
 
   FLAGS, unparsed = parser.parse_known_args()
-  tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)
+  tf.app.run(main=main)
+  #tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)
