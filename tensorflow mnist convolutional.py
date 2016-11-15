@@ -333,7 +333,6 @@ if __name__ == '__main__':
       default=False,
       action='store_true',
       help='True if running a self test.')
-
   FLAGS, unparsed = parser.parse_known_args()
   tf.app.run(main=main)
   #tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)
